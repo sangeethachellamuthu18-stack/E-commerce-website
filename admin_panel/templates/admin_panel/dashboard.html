@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="#" class="active">Dashboard</a>
+    <a href="{% url 'admin_customer' %}">Customers</a>
+    <a href="{% url 'admin_orders' %}">Orders</a>
+    <a href="products">Products</a>
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Dashboard</h1>
+      <div class="user-info">Welcome, Admin</div>
+    </header>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Users</h3>
+        <p>{{ customers_count }}</p>
+      </div>
+      <div class="card">
+        <h3>New Orders</h3>
+        <p>{{ orders_count }}</p>
+      </div>
+      <div class="card">
+        <h3>Products</h3>
+        <p>{{ products_count }}</p>
+      </div>
+      <div class="card">
+        <h3>Revenue</h3>
+        <p>{{ total_revenue }}</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>Recent Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for users in recent_users %}
+        <tr>
+          <td>{{ users.username }}</td>
+          <td>{{ users.email }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No users found</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>
