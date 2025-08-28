@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style4.css' %}">
+</head>
+<body>
+<h1>Product List</h1>
+<a href="{% url 'add_product' %}"><button>Add Product</button></a>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Image</th>
+    <th>Actions</th>
+  </tr>
+  {% for product in products %}
+  <tr>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+    <td>{{ product.stock }}</td>
+    <td>{{ product.description }}</td>
+    <td>{{ product.category }}</td>
+    <td>
+      {% if product.image %}
+      <img src="{{ product.image.url }}" width="60">
+      {% endif %}
+    </td>
+    <td>
+      <a href="{% url 'edit_product' product.id %}">Edit</a>
+      <form action="{% url 'delete_product' product.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" onclick="return co nfirm('Delete this product?')">Delete</button>
+      </form>
+    </td>
+  </tr>
+{% endfor %}
+</table>
+</body>
+</html>

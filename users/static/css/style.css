@@ -1,0 +1,46 @@
+ body{
+     font-family: "Times New Roman";
+     background-color: whitesmoke;
+ }
+ h1{
+     text-align: center;
+     padding: 20px;
+     margin: 20px;
+     border: 2px solid black;
+     background-color: aquamarine;
+     color: red;
+ }
+ #home{
+     background-color: aliceblue;
+     border: 2px solid black;
+     padding: 20px;
+     margin: 20px;
+ }
+ .btn{
+     display: flex;
+     gap: 50px;
+ }
+
+ button{
+     background-color: lightgreen;
+ }
+
+ .messages {
+            list-style: none;
+            padding: 0;
+        }
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .alert-error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+        .alert-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
